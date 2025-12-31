@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="ar" dir="rtl" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>المركز الطبي | الرئيسية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ---------- استيراد خطوط ---------- */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+    /* ---------- المتغيرات (Variables) ---------- */
+    :root{
+      /* الأزرق الداكن (النيلي) لتمثيل الثقة والمصداقية */
+      --primary:#0d47a1; 
+      /* لون ثانوي/تركيز للاستخدامات الخفيفة */
+      --accent:#00a86b;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      /* رمادي احترافي للنصوص المساعدة */
+      --muted:#6b7280;
+      /* استخدام خط Cairo كخط أساسي */
+      font-family: 'Cairo', sans-serif;
+
+      transition: .25s ease-in-out;
+    }
+    body , header , footer , .btn , p {
+  transition: 0.25s ease-in-out;
+}
+    
+    /* ---------- إعادة الضبط والإعدادات العامة ---------- */
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:#0f1724;line-height:1.45;transition: 0.25s ease-in-out;}
+    body {
+      transition: 0.25s ease;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    
+    /* ---------- الوضع الليلي (Dark Mode) ---------- */
+    body.dark {
+        background:#0f172a;
+        color:#e2e8f0;
+        --muted: #94a3b8; /* تم نقله هنا لتسهيل التعديل على المتغيرات في الوضع الليلي */
+    }
+        body.dark i {
+      color: #93c5fd;
+    }
+    body.dark .mode-btn {
+      background: #334155;
+      color: #fff;
+      border: 1px solid #475569;
+    }
+    body.dark header {
+        background: #0f172a;
+    }
+    body.dark .btn,
+    body.dark .appointment_btn {
+        background: #1e293b !important;
+        color: #fff !important;
+    }
+    body.dark .header-icon {
+      background: #0f172a;
+    }
+    /* تأثير الـ Hover على الأزرار في الوضع الليلي */
+    body.dark .btn:hover,
+    body.dark .appointment_btn:hover {
+        background: #2c3b51 !important; /* لون أغمق قليلاً لإظهار التحويم */
+    }
+    body.dark .card,
+    body.dark form,
+    body.dark .service{
+      background:#1e293b !important;
+      color:#fff;
+      border: 1px solid #334155;
+    }
+        body.dark .main-card{
+      background:#1e293b !important;
+      color:#fff;
+    }
+    body.dark input,
+    body.dark select,
+    body.dark textarea {
+      background:#0f172a !important;
+      border-color:#334155;
+      color:white;
+    }
+    body.dark .doc-photo img{
+      background-color: #0f172a;
+    }  
+    body.dark .section-btns-active {
+      background: #0f172a !important;
+  color: white;
+  border-color: #334155;
+    }
+    body.dark .heroo {
+      background: linear-gradient(135deg, #1e293b, #0f172a); 
+    }
+    body.dark .service h3,
+    body.dark .header-icon h1 {
+        color: #93c5fd; 
+    }
+    body.dark .hero {
+      background: #1e293b !important;
+    }
+    body.dark .sympoties-btn {
+          background: #0f172a;
+          border: 2px solid #83989940;
+          color: white;
+    }
+    body.dark .section-btns {
+      color: #93c5fd;
+      border-color: #93c5fd;
+      background: #0f172a;
+    }
+    body.dark .header-card{
+      background: #18202f !important;
+    }
+    body.dark .btn_specialetes {
+                background: #0f172a;
+          border: 2px solid #83989940;
+          color: white;
+    }
+    body.dark .footer-grid {
+      border-bottom: 1px solid #334155;
+    }
+    body.dark .footer-grid h3 {
+        color: #93c5fd;
+    }
+    body.dark .footer-links a {
+        color: var(--muted);
+    }
+    body.dark .footer-links a:hover {
+        color: #93c5fd;
+    }
+    body.dark #btn {
+      background-color: #0f172a !important;
+    }
+    body.dark #btn:hover {
+      background: #2c3b51;
+    }
+    body.dark footer {
+      background-color: #1e293b !important;
+    }
+    body.dark h1 , body.dark h2 {
+      color: #93c5fd;
+    }
+    body.dark .specialted-active{
+      background: #18202f !important;
+  border: 2px solid #83989940;
+  color: white;
+    }
+body.dark::selection {
+    background: #041429;
+    color: #0e2d47;
+}
+body.dark img::selection {
+    background: #ffffff0a;
+}
+    /* ---------- الرأس (Header) ---------- */
+    header {
+      background-color: var(--primary);
+      padding: 18px;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{font-weight:700;font-size:20px}
+    .nav-links{display:flex;gap:12px}
+    .nav-links a{
+      color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.15)}
+    
+    /* زر الوضع الليلي */
+    .mode-btn {
+      cursor: pointer;
+      padding: 8px 14px;
+      background: #fff;
+      border-radius: 8px;
+      border: none;
+      color: #333;
+      font-weight: bold;
+    }
+        .i {
+      font-weight: 900;
+      color: #093c8d;
+    }
+    /* ---------- قسم البطل (Hero Section) ---------- */
+    .heroo {
+      background: linear-gradient(135deg, rgba(13, 71, 161, 0.95), rgba(0, 50, 150, 0.85));
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .containerr {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- قسم الخدمات (Services) ---------- */
+    .hero{
+      display:grid;
+      gap:24px;
+      padding:40px;
+      align-items:center;
+      background: white;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;margin-top:18px
+    }
+    .service{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(5,10,15,0.05);
+    }
+    .service h3 {
+        color: var(--primary);
+    }
+
+    /* ---------- قسم الأطباء (Doctors) ---------- */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:14px;
+    }
+    .card{
+      background:white;
+      padding:15px;
+      border-radius:12px;
+      box-shadow:0 4px 18px rgba(2,6,23,0.06);
+      text-align:center;
+      cursor: pointer;
+                  transition: 0.25s ease-in-out;
+    }
+        .card:hover {
+                  transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            cursor:auto;
+            transition: 0.25s ease-in-out;
+            
+    }
+    .doc-photo{
+      height:150px;
+      border-radius:10px;
+      overflow:hidden;
+      background:#eef2ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .doc-photo img{
+      width:100%;height:100%;object-fit:contain;background-color: white;
+    }
+    .doc-name{font-weight:700;margin-top:8px}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* ---------- الأزرار (Buttons) ---------- */
+    .btn{
+      display: inline-block;
+      padding: 16px 20px;
+      border-radius: 16px;
+      background: #0d47a1;
+      color: white;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .btn:hover , .appointment_btn:hover {
+      background: #093c8d;
+      transition: 0.3s;
+    }
+    .appointment_btn{
+      display:inline-block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: #0d47a1;
+      color:white;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      font-size:14px;
+      transition: 0.3s;
+    }
+
+    /* ---------- نموذج الحجز (Appointment Form) ---------- */
+    form{
+      background:white;
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.06)
+    }
+    input,select,textarea{
+      width:100%;padding:10px;border-radius:8px;
+      border:1px solid #e6edf6;margin-bottom:12px;
+    }
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    /* ---------- الفوتر (Footer) ---------- */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: right;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e6edf6; 
+      margin-bottom: 15px;
+    }
+    .footer-grid h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--primary); 
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .contact-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    footer {
+      background-color: white;
+    }
+
+    /* ---------- التنسيقات المساعدة ---------- */
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--primary);
+    }
+    .containerr h2 {
+      color: white;
+      font-size: 42px;
+    }
+    h1 {
+      color: var(--primary);
+    }
+    #doctors .small {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .sympoties-btn {
+        background: #f8fafc;
+    border: 2px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 18px;
+    }
+    .sympoties-btn:hover {
+      border-color: var(--primary);
+    background: #e3f2fd;
+    }
+    .icon-contner {
+      display: flex;justify-content: center;align-items: center;
+    }
+    .section-btns-active {
+      background: #0d47a1;
+  border: 2px solid #0d47a1;
+  padding: 13px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  transition: 0.25 ease-in-out;
+    }
+
+    .sympoties-grid {
+            display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    }
+    hr {
+      width: 60%;
+  opacity: 19%;
+    }
+    .btn_specialetes {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 16px 50px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    }
+    .section-div-btns {
+      justify-content: center;
+    display: flex;
+    gap: 25px;
+    }
+    .section-btns {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 13px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 65px;
+      margin-top: 38px;
+    }
+    .main-card {
+      background: white;
+    border-radius: 16px;
+        width: 310px;
+            height: 460px;
+            text-align: center;
+
+    }
+    /* تنسيقات للأعراض المختارة */
+.specialted-active {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: white !important;
+}
+
+/* تنسيقات للأزرار النشطة */
+.section-btns-active {
+    background: var(--primary);
+    border: 2px solid var(--primary);
+    color: white;
+}
+
+/* رسالة عدم وجود نتائج */
+.no-results-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    width: 100%;
+}
+
+.no-results-message strong {
+    color: var(--primary);
+}
+
+body.dark .no-results-message {
+    background: #1e293b;
+    border: 1px solid #334155;
+}
+    .header-icon {
+      width: 70px;
+    height: 70px;
+    background: #e3f2fd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .header-card {
+  background: #f4f4f4;
+  padding: 10px;
+  border-top-left-radius: 16px;
+border-top-right-radius: 16px;
+    }
+    .specialted-active {
+      background: var(--primary);
+  border: 2px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 18px;
+    }
+
+
+    /* ---------- التصميم المتجاوب (Responsive) ---------- */
+/* ---------- التصميم المتجاوب (Responsive) ---------- */
+/* ---------- التصميم المتجاوب (Responsive Design) ---------- */
+
+/* ✅ للأجهزة المتوسطة (تابلت) */
+@media (max-width: 1024px) {
+  .container, .containerr {
+    width: 95%;
+    padding: 0 10px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .main-card {
+    width: 45%;
+    height: auto;
+  }
+
+  .sympoties-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ✅ للشاشات الصغيرة (موبايل عادي) */
+@media (max-width: 768px) {
+
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .heroo h2 {
+    font-size: 30px;
+  }
+
+  .heroo p {
+    font-size: 15px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .main-card {
+    width: 85%;
+    height: auto;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-grid h3 {
+    font-size: 16px;
+  }
+}
+
+/* ✅ للشاشات الصغيرة جداً (هواتف) */
+@media (max-width: 600px) {
+  /* الهيدر */
+  header nav {
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: none; /* إخفاء الروابط الطويلة */
+  }
+
+  .mode-btn {
+    margin-top: 10px;
+  }
+
+  .heroo {
+    padding: 3rem 0;
+  }
+
+  .heroo h2 {
+    font-size: 26px;
+  }
+
+  .heroo p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* الأزرار الخاصة بالأعراض */
+  .sympoties-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .sympoties-btn {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  /* بطاقات التخصصات */
+  .main-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ✅ الأزرار الخاصة بأقسام التخصصات */
+  .section-div-btns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .section-btns,
+  .section-btns-active {
+    font-size: 13px;
+    padding: 8px 14px;
+    min-width: unset;
+    flex: 1 1 auto;
+    border-radius: 25px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* الفوتر */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px 10px;
+  }
+}
+
+/* ✅ لشاشات أصغر من 400px (موبايلات صغيرة جدًا) */
+@media (max-width: 400px) {
+  .heroo h2 {
+    font-size: 22px;
+  }
+
+  .sympoties-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .section-btns,
+  .section-btns-active {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .main-card h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width:1024px) {
+
+}
+@media (max-width:946px) {
+  .nav-links {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+                    <div class="i">
+            <i class="fas fa-hospital-alt" style="font-size: 3rem;font-weight: 900;"></i>
+            </div>
+        <div class="logo">المركز الطبي</div>
+  
+        <div class="nav-links">
+          <a href="home.html">الرئيسية</a> 
+          <a href="services.html">الطوارئ</a>
+          <a href="doctors.html">الأطباء</a>
+          <a href="appointment.html">حجز موعد</a>
+          <a href="Analyses_and_Laboratories.html">تحاليل ومختبرات</a>
+          <a href="pharmcy.html">صيدلية الالكترونية</a>
+          <a href="login.html">تسجيل الدخول</a>
+        </div>
+  
+        <button class="mode-btn" id="toggleMode">🌙 </button>
+  
+      </nav>
+    </div>
+  </header>
+
+  <section class="heroo">
+    <div class="containerr">
+      <h2 style="font-size: 40px;">التخصصات الطبية 🏥</h2>
+      <p style="word-spacing: 1px;line-height: 1.7;"> اكتشف التخصص المناسب لأعراضك واحصل على الرعاية الطبية المتخصصة</p>
+    </div>
+  </section>
+
+  <main class="container" id="home">
+    
+    <section class="hero">
+      <div id="services">
+        <h1 style="text-align: center;"> لا تعرف أي تخصص تحتاج؟ 🤔 </h1>
+        <p class="small" style="text-align: center;"> اختر الأعراض التي تشعر بها وسنساعدك في اختيار التخصص المناسب</p>
+      </div>
+      <div class="sympoties-grid">
+        <button id="sympoties-btn" class="sympoties-btn" onclick="showselected()">ألم في الصدر</button>
+        <button id="sympoties-btn1" class="sympoties-btn" onclick="showselected1()">ضيق تنفس</button>
+        <button id="sympoties-btn2" class="sympoties-btn" onclick="showselected2()">ألم في العظام</button>
+        <button id="sympoties-btn3" class="sympoties-btn" onclick="showselected3()">صعوبة الحركة</button>
+        <button id="sympoties-btn4" class="sympoties-btn" onclick="showselected4()">حرارة وسعال</button>
+        <button id="sympoties-btn5" class="sympoties-btn" onclick="showselected5()">طفح جلدي</button>
+        <button id="sympoties-btn6" class="sympoties-btn" onclick="showselected6()">صداع شديد</button>
+        <button id="sympoties-btn7" class="sympoties-btn" onclick="showselected7()">دوخة</button>
+        <button id="sympoties-btn8" class="sympoties-btn" onclick="showselected8()">حكة جلدية</button>
+        <button id="sympoties-btn9" class="sympoties-btn" onclick="showselected9()">بثور</button>
+        <button id="sympoties-btn10" class="sympoties-btn" onclick="showselected10()">قلق وحزن</button>
+        <button id="sympoties-btn11" class="sympoties-btn" onclick="showselected11()">أرق</button>
+      </div>
+      <div style="display: flex;justify-content: center;">
+        <button class="btn_specialetes" > اظهر التخصصات المناسبة لي</button>
+      </div>
+    </section>
+
+    <section style="justify-content: center;display: flex;">
+      <div style="width: 40%;">
+        <div class="section-title">
+        <h2 style="    font-size: 32px;"> التخصصات الطبية المتاحة 🏥  </h2>
+      </div>
+      <div class="section-div-btns">
+        <button id="section-btns" onclick="filterspecialties()" class="section-btns-active">الكل</button>
+        <button id="section-btns1" onclick="filterspecialties1()" class="section-btns">طبي</button>
+        <button id="section-btns2" onclick="filterspecialties2()" class="section-btns">جراحي</button>
+        <button id="section-btns3" onclick="filterspecialties3()" class="section-btns">متخصص</button>
+        <button id="section-btns4" onclick="filterspecialties4()" class="section-btns">مساند</button>
+      </div>
+    </section>
+    <section>
+      <div class="cards" id="cards">
+        <div class="main-card" id="doc">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>🫀</h1></div></div>
+            </div>
+            <h3 style="text-align: unset;">أمراض القلب</h2>
+            <h4 class="small">تشخيص وعلاج أمراض القلب والشرايين</h4>
+          </div>
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4  class="small">ارتفاع ضغط الدم</h4 >
+            <hr>
+            <h4  class="small">قصور الشريان التاجي</h4 >
+            <hr>
+            <h4  class="small">اضطرابات نبض القلب</h4 >
+          <div class="section-div-btns">
+            <button class="section-btns">6 أطباء</button>
+          </div>
+        </div>  
+        <div class="main-card">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>🦴</h1></div></div>
+            </div>
+            <h3 style="text-align: unset;"> العظام والمفاصل</h3>
+            <h4 class="small"> علاج إصابات وأمراض العظام والمفاصل</h4>            
+          </div>
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4 class="small">كسور العظام  </h4>
+            <hr>
+            <h4 class="small">آلام المفاصل</h4>
+            <hr>
+            <h4 class="small">العمود الفقري</h4>
+          <div class="section-div-btns">
+            <button class="section-btns">2 أطباء</button>
+          </div>
+        </div>
+        <div class="main-card">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>👶</h1></div></div>
+            </div>
+            
+            <h3 style="text-align: unset;"> طب الأطفال</h3>
+            <h4 class="small"> رعاية صحية للأطفال متكاملة</h4>            
+          </div>
+
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4 class="small"> نزلات البرد المتكررة </h4>
+            <hr>
+            <h4 class="small">التهابات الأذن</h4>
+            <hr>
+            <h4 class="small"> الحساسية </h4>
+          <div class="section-div-btns">
+            <button class="section-btns">9 أطباء</button>
+          </div>
+        </div> 
+      </div>
+    </section>
+    <section>
+      <div class="cards" id="cards"> 
+        <div class="main-card" id="doc">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>🧠</h1></div></div>
+            </div>
+            <h3 style="text-align: unset;"> الأعصاب والدماغ </h3>
+            <h4 class="small"> تشخيص وعلاج أمراض الجهاز العصبي</h4>            
+          </div>
+
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4 class="small">الصداع النصفي   </h4>
+            <hr>
+            <h4 class="small">الصرع </h4>
+            <hr>
+            <h4 class="small"> الزهايمر</h4>
+          <div class="section-div-btns">
+            <button class="section-btns">7 أطباء</button>
+          </div>
+        </div>
+        <div class="main-card">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>✨</h1></div></div>
+            </div>
+            <h3 style="text-align: unset;"> الجلدية  </h3>
+            <h4 class="small"> علاج الأمراض الجلدية ومشاكل البشرة</h4>            
+          </div>
+
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4 class="small"> حب الشباب   </h4>
+            <hr>
+            <h4 class="small">الإكزيما </h4>
+            <hr>
+            <h4 class="small"> الصدفية</h4>
+          <div class="section-div-btns">
+            <button class="section-btns">6 أطباء</button>
+          </div>
+        </div>
+         <div class="main-card">
+          <div class="header-card">
+            <div class="icon-contner">
+              <div class="header-icon"><div><h1>😊</h1></div></div>
+            </div>
+            <h3 style="text-align: unset;"> النفسية  </h3>
+            <h4 class="small"> رعاية الصحة النفسية والعلاج السلوكي</h4>            
+          </div>
+
+            <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+            <h4 class="small"> الاكتئاب   </h4>
+            <hr>
+            <h4 class="small">القلق </h4>
+            <hr>
+            <h4 class="small"> اضطرابات النوم</h4>
+          <div class="section-div-btns">
+            <button class="section-btns">11 أطباء</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>المركز الطبي المتكامل</h3>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+            نسعى لتقديم أعلى مستويات الرعاية الصحية المتكاملة، ملتزمون بالجودة، الثقة، والابتكار لراحة المريض.
+          </p>
+          <p style="font-size: 14px; margin-top: 15px; color: var(--muted);">رؤيتنا: صحة أفضل لمجتمع أفضل.</p>
+        </div>
+
+        <div>
+          <h3>روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="specialties.html">التخصصات الطبية</a></li>
+            <li><a href="doctors.html">فريق الأطباء</a></li>
+            <li><a href="appointment.html">حجز موعد</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>خدماتنا</h3>
+          <ul class="footer-links">
+            <li><a href="services.html">الطوارئ (24 ساعة)</a></li>
+            <li><a href="medical-ai-chat/chat.html">استشارات أونلاين</a></li>
+            <li><a href="Analyses_and_Laboratories.html">تحاليل ومختبرات</a></li>
+            <li><a href="pharmcy.html">صيدلية الالكترونية  </a></li>
+          </ul>
+        </div>
+
+        <div class="contact-info">
+          <h3>اتصل بنا</h3>
+          <p style="color: var(--muted);"> الهاتف: +966 50 123 4567 📞</p>
+          <p style="color: var(--muted);"> البريد: info@medicalcenter.com 📧</p>
+          <p style="color: var(--muted);"> العنوان: شارع ، المبنى 📍</p>
+        </div>
+      </div>
+      
+      <div style="padding-top: 10px; text-align: center;">
+        <br>
+        <p style="margin: 0; font-size: 13px; color: var(--muted);">© جميع الحقوق محفوظة — المركز الطبي 2025</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    // ================= الوضع الليلي (Dark Mode Toggle) =================
+    document.getElementById("toggleMode").onclick = () => {
+      document.body.classList.toggle("dark");
+
+      // تغيير الأيقونة حسب الوضع
+      const btn = document.getElementById("toggleMode");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = " ☀️";
+      } else {
+        btn.textContent = "  🌙";
+      }
+    };
+
+    // ================= بيانات الأعراض والتخصصات المقترحة =================
+    const symptomsToSpecialties = {
+      // ألم في الصدر
+      'ألم في الصدر': ['أمراض القلب', 'الباطنة', 'الصدرية'],
+      // ضيق تنفس
+      'ضيق تنفس': ['الصدرية', 'أمراض القلب', 'الباطنة'],
+      // ألم في العظام
+      'ألم في العظام': ['العظام والمفاصل', 'الروماتيزم'],
+      // صعوبة الحركة
+      'صعوبة الحركة': ['العظام والمفاصل', 'الروماتيزم', 'الأعصاب'],
+      // حرارة وسعال
+      'حرارة وسعال': ['الباطنة', 'الصدرية', 'طب الأطفال'],
+      // طفح جلدي
+      'طفح جلدي': ['الجلدية', 'الباطنة'],
+      // صداع شديد
+      'صداع شديد': ['الأعصاب والدماغ', 'الباطنة'],
+      // دوخة
+      'دوخة': ['الأعصاب والدماغ', 'أمراض القلب', 'الأذن والأنف والحنجرة'],
+      // حكة جلدية
+      'حكة جلدية': ['الجلدية', 'الباطنة'],
+      // بثور
+      'بثور': ['الجلدية'],
+      // قلق وحزن
+      'قلق وحزن': ['النفسية', 'الباطنة'],
+      // أرق
+      'أرق': ['النفسية', 'الأعصاب والدماغ']
+    };
+
+    // ================= تصنيف التخصصات حسب النوع =================
+    const specialtyCategories = {
+      'طبي': ['أمراض القلب', 'الباطنة', 'الصدرية', 'الأطفال', 'الجلدية', 'النفسية'],
+      'جراحي': ['العظام والمفاصل', 'الجراحة العامة', 'جراحة المخ والأعصاب', 'جراحة التجميل'],
+      'متخصص': ['الأعصاب والدماغ', 'الأنف والأذن والحنجرة', 'العيون', 'المسالك البولية'],
+      'مساند': ['التخدير', 'الأشعة', 'المختبرات', 'التغذية العلاجية']
+    };
+
+    // ================= الكروت المتاحة مع تصنيفاتها =================
+    const availableCards = [
+      { id: 1, title: 'أمراض القلب', category: 'طبي', icon: '🫀' },
+      { id: 2, title: 'العظام والمفاصل', category: 'جراحي', icon: '🦴' },
+      { id: 3, title: 'طب الأطفال', category: 'طبي', icon: '👶' },
+      { id: 4, title: 'الأعصاب والدماغ', category: 'متخصص', icon: '🧠' },
+      { id: 5, title: 'الجلدية', category: 'طبي', icon: '✨' },
+      { id: 6, title: 'النفسية', category: 'طبي', icon: '😊' }
+    ];
+
+    // ================= متغيرات التتبع =================
+    let selectedSymptoms = [];
+    let currentCategory = 'الكل';
+
+    // ================= وظيفة إظهار التخصص المختار =================
+    function showselected() {
+      toggleSymptom('ألم في الصدر', 'sympoties-btn');
+    }
+    function showselected1() {
+      toggleSymptom('ضيق تنفس', 'sympoties-btn1');
+    }
+    function showselected2() {
+      toggleSymptom('ألم في العظام', 'sympoties-btn2');
+    }
+    function showselected3() {
+      toggleSymptom('صعوبة الحركة', 'sympoties-btn3');
+    }
+    function showselected4() {
+      toggleSymptom('حرارة وسعال', 'sympoties-btn4');
+    }
+    function showselected5() {
+      toggleSymptom('طفح جلدي', 'sympoties-btn5');
+    }
+    function showselected6() {
+      toggleSymptom('صداع شديد', 'sympoties-btn6');
+    }
+    function showselected7() {
+      toggleSymptom('دوخة', 'sympoties-btn7');
+    }
+    function showselected8() {
+      toggleSymptom('حكة جلدية', 'sympoties-btn8');
+    }
+    function showselected9() {
+      toggleSymptom('بثور', 'sympoties-btn9');
+    }
+    function showselected10() {
+      toggleSymptom('قلق وحزن', 'sympoties-btn10');
+    }
+    function showselected11() {
+      toggleSymptom('أرق', 'sympoties-btn11');
+    }
+
+    // ================= وظيفة تبديل اختيار الأعراض =================
+    function toggleSymptom(symptom, buttonId) {
+      const button = document.getElementById(buttonId);
+      const index = selectedSymptoms.indexOf(symptom);
+      
+      if (index === -1) {
+        // إضافة العرض
+        selectedSymptoms.push(symptom);
+        button.classList.add('specialted-active');
+      } else {
+        // إزالة العرض
+        selectedSymptoms.splice(index, 1);
+        button.classList.remove('specialted-active');
+      }
+      
+      console.log('الأعراض المختارة:', selectedSymptoms);
+    }
+
+    // ================= وظيفة إظهار التخصصات المقترحة =================
+    function showRecommendedSpecialties() {
+      if (selectedSymptoms.length === 0) {
+        alert('⚠️ الرجاء اختيار عرض واحد على الأقل');
+        return;
+      }
+
+      // جمع جميع التخصصات المقترحة للأعراض المختارة
+      let recommendedSpecialties = [];
+      selectedSymptoms.forEach(symptom => {
+        if (symptomsToSpecialties[symptom]) {
+          recommendedSpecialties = [...new Set([...recommendedSpecialties, ...symptomsToSpecialties[symptom]])];
+        }
+      });
+
+      // تصفية الكروت لتظهر فقط التخصصات المقترحة
+      renderCards(recommendedSpecialties);
+      
+      // إظهار رسالة بالمقترحات
+    }
+
+    // ================= وظيفة فلترة التخصصات حسب النوع =================
+    function filterspecialties() {
+      currentCategory = 'الكل';
+      updateFilterButtons('section-btns');
+      renderCards();
+    }
+    
+    function filterspecialties1() {
+      currentCategory = 'طبي';
+      updateFilterButtons('section-btns1');
+      renderCards();
+    }
+    
+    function filterspecialties2() {
+      currentCategory = 'جراحي';
+      updateFilterButtons('section-btns2');
+      renderCards();
+    }
+    
+    function filterspecialties3() {
+      currentCategory = 'متخصص';
+      updateFilterButtons('section-btns3');
+      renderCards();
+    }
+    
+    function filterspecialties4() {
+      currentCategory = 'مساند';
+      updateFilterButtons('section-btns4');
+      renderCards();
+    }
+
+    // ================= تحديث أزرار الفلترة =================
+    function updateFilterButtons(activeButtonId) {
+      const buttons = ['section-btns', 'section-btns1', 'section-btns2', 'section-btns3', 'section-btns4'];
+      
+      buttons.forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (buttonId === activeButtonId) {
+          button.classList = 'section-btns-active';
+        } else {
+          button.classList = 'section-btns';
+        }
+      });
+    }
+
+    // ================= وظيفة عرض الكروت =================
+    function renderCards(filteredTitles = null) {
+      const cardsContainer = document.querySelector('.cards');
+      const allCardsContainers = document.querySelectorAll('.cards');
+      
+      // مسح جميع الكروت الحالية
+      allCardsContainers.forEach(container => {
+        container.innerHTML = '';
+      });
+      
+      // تصفية الكروت بناءً على الفلترة الحالية
+      let filteredCards = [...availableCards];
+      
+      // إذا كان هناك تخصصات محددة (من الأعراض)
+      if (filteredTitles && filteredTitles.length > 0) {
+        filteredCards = filteredCards.filter(card => 
+          filteredTitles.includes(card.title)
+        );
+      }
+      
+      // فلترة حسب الفئة إذا لم يكن "الكل"
+      if (currentCategory !== 'الكل' && specialtyCategories[currentCategory]) {
+        filteredCards = filteredCards.filter(card => 
+          specialtyCategories[currentCategory].includes(card.title)
+        );
+      }
+      
+      // عرض الكروت المصفاة
+      if (filteredCards.length === 0) {
+        const noResultsMsg = document.createElement('div');
+        noResultsMsg.className = 'no-results-message';
+        noResultsMsg.style.textAlign = 'center';
+        noResultsMsg.style.padding = '20px';
+        noResultsMsg.style.color = 'var(--muted)';
+        noResultsMsg.innerHTML = 'لا توجد تخصصات متاحة للعرض حالياً';
+        cardsContainer.appendChild(noResultsMsg);
+      } else {
+        // تقسيم الكروت لمجموعات (3 في كل مجموعة)
+        for (let i = 0; i < filteredCards.length; i += 3) {
+          const cardGroup = filteredCards.slice(i, i + 3);
+          
+          // إنشاء حاوية جديدة للمجموعة إذا لزم الأمر
+          const groupContainer = i === 0 ? cardsContainer : createNewCardsContainer();
+          
+          cardGroup.forEach(card => {
+            groupContainer.appendChild(createCardElement(card));
+          });
+        }
+      }
+    }
+
+    // ================= إنشاء حاوية جديدة للكروت =================
+    function createNewCardsContainer() {
+      const section = document.createElement('section');
+      const cardsDiv = document.createElement('div');
+      cardsDiv.className = 'cards';
+      section.appendChild(cardsDiv);
+      document.querySelector('main').appendChild(section);
+      return cardsDiv;
+    }
+
+    // ================= إنشاء عنصر كرت =================
+    function createCardElement(card) {
+      const cardDiv = document.createElement('div');
+      cardDiv.className = 'main-card';
+      
+      // تحديد الأمراض الشائعة لكل تخصص
+      const commonDiseases = getCommonDiseases(card.title);
+      const doctorsCount = getDoctorsCount(card.title);
+      
+      cardDiv.innerHTML = `
+        <div class="header-card">
+          <div class="icon-contner">
+            <div class="header-icon"><div><h1>${card.icon}</h1></div></div>
+          </div>
+          <h3 style="text-align: unset;">${card.title}</h3>
+          <h4 class="small">${getSpecialtyDescription(card.title)}</h4>
+        </div>
+        <h3 style="text-align: unset;">الأمراض الشائعة:</h3>
+        <h4 class="small">${commonDiseases[0] || ''}</h4>
+        <hr>
+        <h4 class="small">${commonDiseases[1] || ''}</h4>
+        <hr>
+        <h4 class="small">${commonDiseases[2] || ''}</h4>
+        <div class="section-div-btns">
+          <button class="section-btns">${doctorsCount} أطباء</button>
+        </div>
+      `;
+      
+      return cardDiv;
+    }
+
+    // ================= وظائف مساعدة =================
+    function getSpecialtyDescription(title) {
+      const descriptions = {
+        'أمراض القلب': 'تشخيص وعلاج أمراض القلب والشرايين',
+        'العظام والمفاصل': 'علاج إصابات وأمراض العظام والمفاصل',
+        'طب الأطفال': 'رعاية صحية للأطفال متكاملة',
+        'الأعصاب والدماغ': 'تشخيص وعلاج أمراض الجهاز العصبي',
+        'الجلدية': 'علاج الأمراض الجلدية ومشاكل البشرة',
+        'النفسية': 'رعاية الصحة النفسية والعلاج السلوكي'
+      };
+      return descriptions[title] || 'تخصص طبي متكامل';
+    }
+
+    function getCommonDiseases(title) {
+      const diseases = {
+        'أمراض القلب': ['ارتفاع ضغط الدم', 'قصور الشريان التاجي', 'اضطرابات نبض القلب'],
+        'العظام والمفاصل': ['كسور العظام', 'آلام المفاصل', 'العمود الفقري'],
+        'طب الأطفال': ['نزلات البرد المتكررة', 'التهابات الأذن', 'الحساسية'],
+        'الأعصاب والدماغ': ['الصداع النصفي', 'الصرع', 'الزهايمر'],
+        'الجلدية': ['حب الشباب', 'الإكزيما', 'الصدفية'],
+        'النفسية': ['الاكتئاب', 'القلق', 'اضطرابات النوم']
+      };
+      return diseases[title] || ['مرض 1', 'مرض 2', 'مرض 3'];
+    }
+
+    function getDoctorsCount(title) {
+      const counts = {
+        'أمراض القلب': 6,
+        'العظام والمفاصل': 2,
+        'طب الأطفال': 9,
+        'الأعصاب والدماغ': 7,
+        'الجلدية': 6,
+        'النفسية': 11
+      };
+      return counts[title] || 0;
+    }
+
+    // ================= تهيئة الصفحة =================
+    document.addEventListener('DOMContentLoaded', function() {
+      // إضافة event listener لزر "اظهر التخصصات المناسبة لي"
+      const showSpecialtiesBtn = document.querySelector('.btn_specialetes');
+      if (showSpecialtiesBtn) {
+        showSpecialtiesBtn.addEventListener('click', showRecommendedSpecialties);
+      }
+      
+      // عرض جميع الكروت عند التحميل
+      renderCards();
+      
+      // تحديث أزرار الفلترة
+      updateFilterButtons('section-btns');
+    });
+
+    // ================= بيانات التخصصات (Specialties Data) =================
+    const specData = {
+      heart: [
+        {name:"د. محمد ياسر", title:"استشاري قلب", image:"imgs/boy_doctor-removebg-preview.png"},
+        {name:"د. ليلى عبد الحميد", title:"أخصائي قلب", image:"imgs/girl_doctor-removebg-preview.png"}
+      ],
+      bones: [
+        {name:"د. سامح عادل", title:"استشاري عظام", image:"imgs/boy_doctor-removebg-preview.png"},
+        {name:"د. نهى حسن", title:"أخصائي عظام", image:"imgs/girl_doctor-removebg-preview.png"}
+      ],
+      kids: [
+        {name:"د. هاني عبد السلام", title:"أخصائي أطفال", image:"imgs/boy_doctor-removebg-preview.png"},
+        {name:"د. مي سعيد", title:"استشارية أطفال", image:"imgs/girl_doctor-removebg-preview.png"}
+      ],
+      internal: [
+        {name:"د. عمر يوسف", title:"استشاري باطنة", image:"imgs/boy_doctor-removebg-preview.png"},
+        {name:"د. ياسمين عبد الفتاح", title:"أخصائية باطنة", image:"imgs/girl_doctor-removebg-preview.png"}
+      ]
+    };
+
+    // ================= عرض أطباء التخصص (Show Specialty Doctors) =================
+    function showSpecDoctors(type){
+      const box = document.getElementById("specDoctors");
+      box.innerHTML = "";
+
+      specData[type].forEach(doc=>{
+        box.innerHTML += `
+          <div class="card" style="width:180px">
+            <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;margin:auto;">
+              <img src="${doc.image}" style="width:100%;height:115%;object-contain;">
+            </div>
+            <h3>${doc.name}</h3>
+            <p class="small">${doc.title}</p>
+          </div>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>

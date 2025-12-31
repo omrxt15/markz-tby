@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ar" dir="rtl" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>المركز الطبي | تحاليل و المختبرات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+    /* ---------- المتغيرات (Variables) ---------- */
+    :root{
+      /* الأزرق الداكن (النيلي) لتمثيل الثقة والمصداقية */
+      --primary:#0d47a1; 
+      /* لون ثانوي/تركيز للاستخدامات الخفيفة */
+      --accent:#00a86b;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      /* رمادي احترافي للنصوص المساعدة */
+      --muted:#6b7280;
+      /* استخدام خط Cairo كخط أساسي */
+      font-family: 'Cairo', sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:#0f1724;line-height:1.45}
+
+    body , header , footer , .btn , p {
+  transition: 0.25s ease-in-out;
+}
+
+    header {
+      background-color: var(--primary);
+      padding: 18px;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+    }
+/* زر الوضع الليلي */
+.mode-btn {
+      cursor: pointer;
+      padding: 8px 14px;
+      background: #fff;
+      border-radius: 8px;
+      border: none;
+      color: #333;
+      font-weight: bold;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--primary);
+    }
+    .containerr h2 {
+            color: white;
+      font-size: 42px;
+    }
+    h1 {
+      color: var(--primary);
+    }
+    #doctors .small {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .card {
+      cursor: pointer;
+    }
+    /* ---------- الوضع الليلي (Dark Mode) ---------- */
+    body.dark {
+        background:#0f172a;
+        color:#e2e8f0;
+        --muted: #94a3b8; /* تم نقله هنا لتسهيل التعديل على المتغيرات في الوضع الليلي */
+    }
+        body.dark footer {
+      background-color: #1e293b !important;
+    }
+    
+    body.dark .mode-btn {
+      background: #334155;
+      color: #fff;
+      border: 1px solid #475569;
+    }
+    body.dark header {
+        background: #0f172a;
+    }
+    body.dark .btn,
+    body.dark .appointment_btn {
+        background: #1e293b !important;
+        color: #fff !important;
+    }
+    /* تأثير الـ Hover على الأزرار في الوضع الليلي */
+    body.dark .btn:hover,
+    body.dark .appointment_btn:hover {
+        background: #2c3b51 !important; /* لون أغمق قليلاً لإظهار التحويم */
+    }
+    body.dark .card,
+    body.dark form,
+    body.dark .service,
+    body.dark .content-card{
+      background:#1e293b !important;
+      color:#fff;
+      border: 1px solid #334155;
+    }
+    body.dark input,
+    body.dark select,
+    body.dark textarea {
+      background:#0f172a !important;
+      border-color:#334155;
+      color:white;
+    }
+    body.dark h1 , body.dark h2 {
+      color: #93c5fd;
+    }
+    body.dark .doc-photo img{
+      background-color: #0f172a;
+    }  
+    body.dark .heroo {
+      background: linear-gradient(135deg, #1e293b, #0f172a); 
+    }
+    body.dark .service h3 {
+        color: #93c5fd; 
+    }
+    body.dark .footer-grid {
+      border-bottom: 1px solid #334155;
+    }
+    body.dark .footer-grid h3 ,body.dark .title h2 {
+        color: #93c5fd;
+    }
+    body.dark .footer-links a {
+        color: var(--muted);
+    }
+    body.dark .footer-links a:hover {
+        color: #93c5fd;
+    }
+    body.dark #btn {
+      background-color: #0f172a !important;
+    }
+    body.dark #btn:hover {
+      background: #2c3b51 !important; /* لون أغمق قليلاً لإظهار التحويم */
+    }
+body.dark::selection {
+    background: #041429;
+    color: #0e2d47;
+}
+body.dark img::selection {
+    background: #ffffff0a;
+}
+    .container{max-width:1200px;margin:0 auto;padding:20px;}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{font-weight:700;font-size:20px}
+
+    .nav-links{display:flex;gap:12px}
+    .nav-links a{
+      color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.15)}
+
+     
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:24px;
+      padding:40px 0;
+      align-items:center;
+    }
+.cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+            /* ---------- الفوتر (Footer) ---------- */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: right;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e6edf6; 
+      margin-bottom: 15px;
+    }
+    .footer-grid h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--primary); 
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .contact-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+        footer {
+      background-color: white;
+    }
+
+    /* Services */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;margin-top:18px
+    }
+    .service{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(5,10,15,0.05);
+    }
+
+    .card{
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 18px rgba(2, 6, 23, 0.06);
+    text-align: center;
+    width: 260px;
+    height: 410px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+                  transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            cursor:auto;
+            
+    }
+    
+    hr {
+          opacity: 15%;
+    width: 80%;
+    }
+
+
+    i {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #093c8d;
+    }
+    body.dark i {
+      color: #93c5fd;
+    }
+
+    .small{font-size:13px;color:var(--muted)}
+
+    /* ---------- الأزرار (Buttons) ---------- */
+.btn {
+    display: inline-block;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #0d47a1;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+    .btn:hover , .appointment_btn:hover {
+      background: #093c8d;
+      transition: 0.3s;
+    }
+    .appointment_btn{
+      display:inline-block;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: #0d47a1;
+      color:white;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      font-size:14px;
+      transition: 0.3s;
+    }
+
+
+    input,select,textarea{
+      width:100%;padding:10px;border-radius:8px;
+      border:1px solid #e6edf6;margin-bottom:12px;
+    }
+
+    form{
+      background:white;
+      padding:16px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.06)
+    }
+    .laboratories {
+    display: inline-flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    }
+
+body {
+  transition: 0.25s ease;
+}
+#doctors .small {
+  text-align: center;
+  margin-top: 40px;
+}
+
+    .heroo {
+      background: linear-gradient(135deg, rgba(13, 71, 161, 0.95), rgba(0, 50, 150, 0.85));
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    #i {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+    }
+    .content-card {
+      background: white;
+  text-align: center;
+  width: 15rem;
+  height: 13rem;
+  border-radius: 11px;
+    }
+    .containerr {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+/* تحسين استجابة الموقع لجميع الشاشات */
+
+@media (max-width: 1024px) {
+  .laboratories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* عرض كرتين في الصف عند الشاشات المتوسطة */
+    gap: 20px;
+  }
+  
+  .card {
+    width: auto; /* السماح للكرت بأخذ عرض العمود بالكامل */
+  }
+
+  .content-card {
+    width: 45%; /* عرض خطوتين في الصف الواحد */
+  }
+}
+@media (max-width:932px) {
+  .nav-links {
+    display: none;
+  }
+}
+    @media (max-width:613px) {
+            .row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        text-align: center;
+      }
+      .footer-grid {
+        text-align: center;
+      }
+    .footer-grid div h3 {
+      font-size: 30px;
+    }
+    .footer-links a {
+  font-size: 17px;
+}
+}
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .laboratories {
+    grid-template-columns: 1fr; /* كرت واحد في الصف */
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: 100%; /* الأزرار تأخذ العرض الكامل في الجوال */
+  }
+
+  /* تحسين عرض خطوات الحجز */
+  div[style*="display: flex"] { 
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+
+  .content-card {
+    width: 100%; /* كل خطوة تأخذ سطر مستقل في الجوال */
+    margin-bottom: 15px;
+  }
+
+  .nav-links {
+    display: none; /* إخفاء القائمة الطويلة في الجوال (يفضل استبدالها بقائمة منسدلة) */
+  }
+}
+
+@media (max-width: 480px) {
+  .heroo h2 {
+    font-size: 24px;
+  }
+  
+  header .logo {
+    font-size: 16px;
+  }
+
+  form {
+    padding: 10px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ================= رأس الموقع ================= -->
+
+      <header>
+        <div class="container">
+          <nav>
+            <div class="i">
+            <i class="fas fa-hospital-alt" style="font-size: 3rem;font-weight: 900;"></i>
+            </div>
+            <div class="logo">المركز الطبي</div>
+      
+            <div class="nav-links">
+              <a href="home.html">الرئيسية</a>
+              <a href="services.html">الطوارئ</a>
+              <a href="specialties.html">التخصصات</a>
+              <a href="doctors.html">الأطباء</a>
+              <a href="appointment.html">حجز موعد</a>
+              <a href="pharmcy.html">صيدلية الالكترونية</a>
+              <a href="login.html">تسجيل الدخول</a>
+            </div>
+      
+            <!-- زر الوضع الليلي   -->
+            <button class="mode-btn" id="toggleMode">🌙 </button>
+      
+          </nav>
+        </div>
+      </header>
+      <section class="heroo">
+        <div class="containerr">
+            <h2>مختبرنا الطبي... دقة النتائج لصحة أفضل</h2>
+            <p style="word-spacing: 1px;line-height: 1.7;">اطمئن على صحتك مع أحدث أجهزة التحاليل وأدق النتائج لتشخيص سليم. مختبراتنا مجهزة بأحدث التقنيات العالمية</p>
+            <div class="cta-buttons" >
+                <a style="margin-top: 10px;" href="#services" class="btn"> اعرف أكثر عن أنواع التحاليل</a>
+                <a style="margin-top: 10px;" href="#appointment" class="btn"> احجز تحليلك الآن</a>
+            </div>
+        </div>
+    </section>
+
+
+  <!-- ================= المحتوى ================= -->
+  <main class="container" id="home">
+    
+
+    <!-- ================= Hero ================= -->
+    <section class="hero">
+      <div id="services">
+        <h1 style="text-align: center;">أنواع التحاليل الطبية</h1>
+        <p class="small" style="text-align: center;">نقدم مجموعة واسعة من التحاليل الطبية بدقة عالية باستخدام أحدث التقنيات</p>
+        <div class="laboratories">
+          <div class="card">
+            <div class="title">
+              <i class="fas fa-tint"></i>
+              <h2>تحاليل الدم</h2>
+            </div>
+            <br>
+            <p class="small">صورة الدم الكامل (CBC)</p>
+            <hr style="opacity: 15%;">
+            <p class="small"> تحاليل السكر (Glucose)</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحاليل الكبد</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحاليل الكلى</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحاليل الدهون</p>
+          </div>
+          <div class="card">
+            <div class="title">
+              <i class="fas fa-flask"></i>
+              <h2>تحاليل البول والبراز</h2>
+            </div>
+            <br>
+            <p class="small">تحليل البول (Urinalysis)</p>
+            <hr style="opacity: 15%;">
+            <p class="small">حليل البراز (Stool Analysis)</p>
+            <hr style="opacity: 15%;">
+            <p class="small">مزرعة البول</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحليل حصوات الكلى</p>
+          </div>
+          <div class="card">
+            <div class="title">
+              <i class="fas fa-dna"></i>
+              <h2>التحاليل الهرمونية</h2>
+            </div>
+            <br>
+            <p class="small">هرمونات الغدة الدرقية</p>
+            <hr style="opacity: 15%;">
+            <p class="small"> هرمونات الخصوبة</p>
+            <hr style="opacity: 15%;">
+            <p class="small"> هرمون النمو</p>
+            <hr style="opacity: 15%;">
+            <p class="small"> هرمون الكورتيزول</p>
+          </div>
+          <div class="card">
+            <div class="title">
+              <i class="fas fa-shield-virus"></i>
+              <h2>تحاليل الأمراض المعدية</h2>
+            </div>
+            <br>
+            <p class="small">التهاب الكبد الوبائي</p>
+            <hr style="opacity: 15%;">
+            <p class="small">فيروس نقص المناعة البشرية (HIV)</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحاليل المناعة</p>
+            <hr style="opacity: 15%;">
+            <p class="small">تحاليل الحساسية</p>
+          </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section>
+      <div>
+        <div>
+          <h2>كيفية حجز وإجراء التحاليل</h2>
+          <h3 style="text-align: center;color: var(--muted);">4 خطوات بسيطة للحصول على نتائج دقيقة وسريعة</h3>
+        </div>
+        <div style="display: flex;
+  justify-content: center;
+  gap: 2rem;">
+        <div class="content-card">
+          <i id="i" class="fas fa-calendar-check"></i>
+          <h3>الزيارة للمختبر</h3>
+          <h4> توجه إلى أقرب فرع للمختبر في الموعد المحدد</h4>
+        </div>
+        <div class="content-card">
+          <i id="i" class="fas fa-user-injured"></i>
+          <h3> سحب العينات</h3>
+          <h4>يتم سحب العينات بواسطة فني مختبر محترف في بيئة معقمة</h4>
+        </div>
+        <div class="content-card">
+          <i id="i" class="fas fa-vial"></i>
+          <h3>استلام النتائج</h3>
+          <h4>احصل على نتائجك عبر البريد الإلكتروني أو من خلال حسابك</h4>
+        </div>
+        <div class="content-card">
+          <i id="i" class="fas fa-file-medical-alt"></i>
+          <h3>الحجز المسبق</h3>
+          <h4>احجز موعدك عبر الموقع أو<br> الهاتف، واختر الوقت المناسب<br> لك</h4>
+        </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= نموذج الحجز ================= -->
+    <section id="appointment" style="margin-top:40px">
+      <h2>تريد حجز موعد؟ اضغط على الرابط ادناه</h2>
+      <div style="display: flex;
+  justify-content: center;">
+        <a class="btn" href="appointment.html">حجز موعد</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= الفوتر ================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>المركز الطبي المتكامل</h3>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+            نسعى لتقديم أعلى مستويات الرعاية الصحية المتكاملة، ملتزمون بالجودة، الثقة، والابتكار لراحة المريض.
+          </p>
+          <p style="font-size: 14px; margin-top: 15px; color: var(--muted);">رؤيتنا: صحة أفضل لمجتمع أفضل.</p>
+        </div>
+
+        <div>
+          <h3>روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="specialties.html">التخصصات الطبية</a></li>
+            <li><a href="doctors.html">فريق الأطباء</a></li>
+            <li><a href="appointment.html">حجز موعد</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>خدماتنا</h3>
+          <ul class="footer-links">
+            <li><a href="services.html">الطوارئ (24 ساعة)</a></li>
+            <li><a href="medical-ai-chat/chat.html">استشارات أونلاين</a></li>
+            <li><a href="Analyses_and_Laboratories.html">تحاليل ومختبرات</a></li>
+            <li><a href="pharmcy.html">صيدلية الالكترونية  </a></li>
+          </ul>
+        </div>
+
+        <div class="contact-info">
+          <h3>اتصل بنا</h3>
+          <p style="color: var(--muted);"> الهاتف: +966 50 123 4567 📞</p>
+          <p style="color: var(--muted);"> البريد: info@medicalcenter.com 📧</p>
+          <p style="color: var(--muted);"> العنوان: شارع ، المبنى 📍</p>
+        </div>
+      </div>
+      
+      <div style="padding-top: 10px; text-align: center;">
+        <br>
+        <p style="margin: 0; font-size: 13px; color: var(--muted);">© جميع الحقوق محفوظة — المركز الطبي 2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JavaScript ================= -->
+  <script>
+    document.getElementById("toggleMode").onclick = () => {
+      document.body.classList.toggle("dark");
+
+      // تغيير الأيقونة حسب الوضع
+      const btn = document.getElementById("toggleMode");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = " ☀️";
+      } else {
+        btn.textContent = "  🌙";
+      }
+    };
+
+
+    /*============ نموذج الحجز ============*/
+    document.getElementById("appointmentForm").onsubmit = e => {
+      e.preventDefault();
+
+      const name = fullname.value.trim();
+      const phone = phone.value.trim();
+      const doctorId = doctorSelect.value;
+
+      if(!name || !phone || !doctorId){
+        formMsg.textContent = "يرجى ملء جميع الحقول.";
+        return;
+      }
+
+      const doc = doctors.find(d => d.id == doctorId);
+
+      formMsg.textContent = 
+        `تم إرسال طلب الحجز لدى ${doc.name}. سيتم التواصل معك.`;
+
+      e.target.reset();
+    };
+  </script>
+
+</body>
+</html>

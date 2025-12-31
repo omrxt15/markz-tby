@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> المركز الطبي | تسحيل الدخول </title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+    :root{
+      --primary:#0d47a1; 
+      --accent:#00a86b;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --muted:#6b7280;
+      font-family: 'Cairo', sans-serif;
+    }
+        body {
+            margin: 0;
+            font-family: "Tahoma", sans-serif;
+            background: linear-gradient(to bottom right, #e8f6ff, #ffffff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 350px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 0 20px rgba(0, 80, 140, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 94%;
+            padding: 10px;
+            border: 1px solid #bcd9ea;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #0d47a1;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0d47a1;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0b3c86;
+            color: white;
+        }
+
+        .switch-btn {
+            background: transparent;
+            color: #0d47a1;
+            border: 2px solid #0d47a1;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 625px) {
+            .container {
+                width: 250px;
+                background: #ffffff;
+                padding: 25px;
+                border-radius: 18px;
+                box-shadow: 0 0 20px rgba(0, 80, 140, 0.2);
+            }
+        }
+        @media (max-width:375px) {
+            .container {
+                width: 220px;
+                background: #ffffff;
+                padding: 25px;
+                border-radius: 18px;
+                box-shadow: 0 0 20px rgba(0, 80, 140, 0.2);
+            } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="loginBox">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="loginEmail" placeholder="example@gmail.com" required />
+            <div id="loginEmailError" class="error">الايمال غير صحيح</div>
+
+            <label>كلمة المرور</label>
+            <input type="password" id="loginPassword" placeholder="********" required />
+            <div id="loginPasswordError" class="error">الباسوورد غير صحيج</div>
+
+            <button type="submit">دخول</button>
+        </form>
+
+        <button class="switch-btn" onclick="openCreate()">إنشاء حساب</button>
+    </div>
+
+    <!-- إنشاء حساب -->
+    <div class="container" id="createBox" style="display:none;">
+        <h2>إنشاء حساب</h2>
+        <form id="createForm">
+            <label>الاسم</label>
+            <input type="text" id="createName" placeholder="اسمك الكامل" required />
+
+            <label>الرقم</label>
+            <input type="number" id="createnum">
+            <div id="createnumberError" class="error">رقم الهاتف غير صحيح   </div>
+
+
+            <label>البريد الإلكتروني</label>
+            <input type="email" id="createEmail" placeholder="example@gmail.com" required />
+            <div id="createEmailError" class="error">البريد الإلكتروني غير صحيح</div>
+
+            <label>كلمة المرور</label>
+            <input type="password" id="createPassword" placeholder="********" required />
+            <div id="createPasswordError" class="error">كلمة المرور غير صحيحة</div>
+
+
+            <button type="submit">إنشاء الحساب</button>
+        </form>
+
+        <button class="switch-btn" onclick="openLogin()">رجوع لتسجيل الدخول</button>
+    </div>
+
+    <script>
+        // وظائف التبديل بين النماذج
+        function openCreate() {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("createBox").style.display = "block";
+        }
+
+        function openLogin() {
+            document.getElementById("createBox").style.display = "none";
+            document.getElementById("loginBox").style.display = "block";
+        }
+
+        // التحقق من صحة نموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // مسح رسائل الخطأ السابقة
+            clearErrors();
+            
+            // الحصول على القيم
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            let isValid = true;
+            
+            // التحقق من البريد الإلكتروني
+            if (!validateEmail(email)) {
+                document.getElementById('loginEmailError').textContent = 'البريد الإلكتروني غير صالح';
+                isValid = false;
+            }
+            
+            // التحقق من كلمة المرور
+            if (password.length < 6) {
+                document.getElementById('loginPasswordError').textContent = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+                isValid = false;
+            }
+            
+            // إذا كانت البيانات صحيحة، قم بتسجيل الدخول
+            if (isValid) {
+                loginUser(email, password);
+            }
+        });
+        
+        // التحقق من صحة نموذج إنشاء الحساب
+        document.getElementById('createForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // مسح رسائل الخطأ السابقة
+            clearErrors();
+            
+            // الحصول على القيم
+            const email = document.getElementById('createEmail').value;
+            const password = document.getElementById('createPassword').value;
+            const number = document.getElementById('createnum').value
+            
+            let isValid = true;
+            
+            
+            // التحقق من البريد الإلكتروني
+            if (!validateEmail(email)) {
+                document.getElementById('createEmailError').textContent = 'البريد الإلكتروني غير صالح';
+                isValid = false;
+            }
+            
+            // التحقق من كلمة المرور
+            if (password.length < 6) {
+                document.getElementById('createPasswordError').textContent = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+                isValid = false;
+            }
+
+            if (number.length < 11) {
+                document.getElementById('createnumberError').textContent = 'رقم الهاتف يجب ان يكون مكوت من 11 رقم';
+                isValid = false;
+            }
+
+            if (number.length > 11) {
+                document.getElementById('createnumberError').textContent = 'رقم الهاتف يجب ان يكون مكوت من 11 رقم';
+                isValid = false;
+            }
+            
+            
+            // إذا كانت البيانات صحيحة، قم بإنشاء الحساب
+            if (isValid) {
+                createUser( number ,email, password);
+            }
+        });
+        
+        // وظيفة تسجيل الدخول
+function loginUser(email, password) {
+    // التحقق من نوع المستخدم بناءً على البريد الإلكتروني
+    if (email === "admin@gmail.com" && password === "123456") {
+        // تحويل الأدمن إلى لوحة التحكم
+        window.location.href = "admin.html";
+    } else {
+        // تحويل المريض إلى صفحة المريض
+        window.location.href = "home.html";
+    }
+}
+        
+        // وظيفة إنشاء حساب
+        function createUser(email, password) {
+            
+           document.getElementById("createBox").style.display = "none";
+            document.getElementById("loginBox").style.display = "block";
+        }
+        
+        // وظيفة التحقق من صحة البريد الإلكتروني
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // وظيفة مسح رسائل الخطأ
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+        }
+    </script>
+</body>
+</html>
